@@ -1,0 +1,444 @@
+/* Modern Flocus Design Enhancements - Glassmorphism & Dark/Light Theme */
+
+/* CSS Custom Properties for Theme System */
+:root {
+  /* Light Theme */
+  --flocus-primary: #7432FF;
+  --flocus-primary-light: rgba(116, 50, 255, 0.1);
+  --flocus-primary-transparent: rgba(116, 50, 255, 0.15);
+  
+  /* Glass Effects */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-backdrop-filter: blur(16px);
+  
+  /* Text Colors */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  
+  /* Background */
+  --bg-primary: #000;
+  --bg-secondary: rgba(0, 0, 0, 0.3);
+  
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-quick: all 0.15s ease-in-out;
+}
+
+[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  
+  --text-primary: rgba(0, 0, 0, 0.95);
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-muted: rgba(0, 0, 0, 0.5);
+  
+  --bg-primary: #f8f9fa;
+  --bg-secondary: rgba(255, 255, 255, 0.5);
+}
+
+/* Glassmorphism Base Class */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.glass-effect:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1050;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 0.5rem;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-quick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.theme-toggle button:hover {
+  background: var(--flocus-primary-transparent);
+  transform: scale(1.1);
+}
+
+.theme-toggle button.active {
+  background: var(--flocus-primary);
+  color: white;
+}
+
+/* Enhanced Modal/Panel Styles */
+.modal-content {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--glass-backdrop-filter) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--glass-shadow) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: var(--transition-smooth);
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+.btn-modern:hover {
+  background: var(--flocus-primary-transparent);
+  border-color: var(--flocus-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(116, 50, 255, 0.3);
+}
+
+.btn-primary.btn-modern {
+  background: linear-gradient(135deg, var(--flocus-primary), rgba(116, 50, 255, 0.8));
+  border-color: var(--flocus-primary);
+  color: white;
+}
+
+.btn-primary.btn-modern:hover {
+  background: linear-gradient(135deg, rgba(116, 50, 255, 0.9), var(--flocus-primary));
+  box-shadow: 0 12px 40px rgba(116, 50, 255, 0.4);
+}
+
+/* Modern Form Controls */
+.form-control-modern {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--glass-backdrop-filter) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.form-control-modern:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: var(--flocus-primary) !important;
+  box-shadow: 0 0 0 0.25rem var(--flocus-primary-light) !important;
+}
+
+.form-control-modern::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Sound Player Enhancements */
+sound-player {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+sound-player:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Settings Panel Enhancement */
+settings-panel {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--glass-backdrop-filter) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px !important;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.nav-tabs .nav-link {
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: var(--transition-smooth);
+  margin: 0 0.25rem;
+}
+
+.nav-tabs .nav-link:hover {
+  background: var(--flocus-primary-transparent);
+  color: var(--text-primary);
+}
+
+.nav-tabs .nav-link.active {
+  background: var(--flocus-primary);
+  color: white;
+  box-shadow: 0 4px 16px rgba(116, 50, 255, 0.3);
+}
+
+/* Glassmorphism Footer */
+.footer-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border-top: 1px solid var(--glass-border);
+  border-radius: 24px 24px 0 0;
+  padding: 2rem;
+  margin-top: auto;
+}
+
+/* Mini To-Do Tab (Retractable) */
+.todo-mini-tab {
+  position: fixed;
+  right: -300px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 400px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px 0 0 16px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+  z-index: 1040;
+  overflow: hidden;
+}
+
+.todo-mini-tab.active {
+  right: 0;
+}
+
+.todo-mini-tab .todo-handle {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 80px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop-filter);
+  -webkit-backdrop-filter: var(--glass-backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  transition: var(--transition-smooth);
+}
+
+.todo-mini-tab .todo-handle:hover {
+  background: var(--flocus-primary-transparent);
+  color: var(--flocus-primary);
+}
+
+.todo-mini-tab .todo-content {
+  padding: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.todo-mini-tab h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.todo-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: var(--transition-quick);
+}
+
+.todo-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    scale: 0.9;
+  }
+  
+  .todo-mini-tab {
+    width: 280px;
+    height: 350px;
+  }
+  
+  .modal-content {
+    border-radius: 16px !important;
+    margin: 1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .glass-effect {
+    border-radius: 12px;
+  }
+  
+  .btn-modern {
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .todo-mini-tab {
+    width: 100vw;
+    height: 50vh;
+    right: -100vw;
+    top: auto;
+    bottom: -50vh;
+    border-radius: 16px 16px 0 0;
+    transform: none;
+  }
+  
+  .todo-mini-tab.active {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .todo-mini-tab .todo-handle {
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+    border-right: 1px solid var(--glass-border);
+  }
+}
+
+/* Loading Animation */
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.glass-loading {
+  background: linear-gradient(90deg, var(--glass-bg) 0%, rgba(255, 255, 255, 0.2) 50%, var(--glass-bg) 100%);
+  background-size: 200px 100%;
+  animation: glass-shimmer 1.5s infinite;
+}
+
+/* Focus States */
+.glass-effect:focus,
+.btn-modern:focus,
+.form-control-modern:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--flocus-primary-light);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --text-primary: rgb(255, 255, 255);
+    --text-secondary: rgba(255, 255, 255, 0.9);
+  }
+  
+  [data-theme="light"] {
+    --glass-border: rgba(0, 0, 0, 0.8);
+    --text-primary: rgb(0, 0, 0);
+    --text-secondary: rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Print styles */
+@media print {
+  .theme-toggle,
+  .todo-mini-tab,
+  .glass-effect {
+    background: white !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
